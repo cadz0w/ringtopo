@@ -6,7 +6,7 @@ from mininet.node import RemoteController
 from mininet.cli import CLI
 from mininet.link import TCLink
 
-class GenericTree(Topo):
+class GenericRing(Topo):
 	"""Simple topology example."""
 	def __init__( self, swnum=3, hnum=1 ):
 		# Numbering: h1..N, s1..M
@@ -38,7 +38,7 @@ class GenericTree(Topo):
 def run():
 	c = RemoteController('c', '0.0.0.0', 6633)
 	# Change the args of GenericTree() to your desired values. You could even get them from command line.
-	net = Mininet(topo=GenericTree(swnum=4, hnum=2), host=CPULimitedHost, controller=None)
+	net = Mininet(topo=GenericRing(swnum=4, hnum=2), host=CPULimitedHost, controller=None)
 	net.addController(c)
 	net.start()
 	CLI(net)
